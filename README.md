@@ -17,18 +17,18 @@ The project focuses on comparing model accuracy, inference latency, model size, 
 
 ## 🎯 Key Features
 
-- ✅ Custom BiGRU architecture implemented in PyTorch
-- ✅ BiGRU achieves **92.1% accuracy**
-- ✅ DistilBERT fine-tuning using **LoRA**
-- ✅ DistilBERT + LoRA achieves **91.8% accuracy**
-- ✅ **98% reduction in trainable parameters** using LoRA
-- ✅ MLflow experiment tracking and model versioning
-- ✅ Model benchmarking and comparison
-- ✅ Accuracy, precision, recall, F1-score, latency, and model-size evaluation
-- ✅ FastAPI REST API for inference
-- ✅ Interactive Swagger API documentation
-- ✅ Docker-ready deployment
-- ✅ Complete ML/MLOps training, evaluation, and deployment pipeline
+-  Custom BiGRU architecture implemented in PyTorch
+-  BiGRU achieves **92.1% accuracy**
+-  DistilBERT fine-tuning using **LoRA**
+-  DistilBERT + LoRA achieves **91.8% accuracy**
+-  **98% reduction in trainable parameters** using LoRA
+-  MLflow experiment tracking and model versioning
+-  Model benchmarking and comparison
+-  Accuracy, precision, recall, F1-score, latency, and model-size evaluation
+-  FastAPI REST API for inference
+-  Interactive Swagger API documentation
+-  Docker-ready deployment
+-  Complete ML/MLOps training, evaluation, and deployment pipeline
 
 ---
 
@@ -58,7 +58,7 @@ The comparison highlights the trade-off between a lightweight recurrent neural n
 
 ## 🏗️ System Architecture
 
-```text
+
                          ┌──────────────────────┐
                          │   Emotion Dataset    │
                          │    dair-ai/emotion   │
@@ -154,7 +154,7 @@ emotion-classification-research/
 ├── run.py                   # Main runner script
 ├── test_api.py              # API testing script
 └── README.md               # Documentation
-
+```
 ## 🔧 Tech Stack
 
 | Component | Technology |
@@ -199,8 +199,8 @@ POST /predict
     "fear": 0.000002,
     "surprise": 0.00001
   }
-}
-
+} 
+```
 ## 📊 API Test Results
 
 | Input Text | Predicted | Confidence | Latency |
@@ -220,7 +220,7 @@ POST /predict
 python -m src.deploy
 docker build -t emotion-api .
 docker run -p 8000:8000 emotion-api
-
+```
 
 ## ☁️ Cloud Deployment Options
 
