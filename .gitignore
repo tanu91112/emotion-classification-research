@@ -1,0 +1,89 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+venv/
+env/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb
+
+# MLflow
+mlflow.db
+mlflow_runs/
+
+*.db-journal
+
+# Logs
+logs/
+*.log
+
+# Models (Optional - uncomment if you want to exclude large files)
+# models/bigru/
+# models/distilbert_lora/
+
+# Training outputs
+*.pth
+*.pkl
+*.keras
+
+# OS
+Thumbs.db
+Desktop.ini
+
+# Environment variables
+.env
+.env.local
+
+# Coverage
+.coverage
+htmlcov/
+
+# pytest
+.pytest_cache/
+.test_cache/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Docker
+*.pid
+
+# Generated files
+*.tmp
+*.temp
