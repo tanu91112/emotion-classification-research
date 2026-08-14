@@ -1,38 +1,109 @@
 # 🧠 Emotion Classification Research: BiGRU vs DistilBERT + LoRA
 
 ## 📖 Overview
-This project compares two approaches for emotion classification on the `dair-ai/emotion` dataset:
-1. **BiGRU** - Custom bidirectional GRU architecture (PyTorch)
-2. **DistilBERT + LoRA** - Fine-tuned transformer with parameter-efficient fine-tuning
 
-Both models classify text into 6 emotions: **sadness, joy, love, anger, fear, and surprise**.
+This project presents a comparative study of two deep learning approaches for **6-class emotion classification** using the [`dair-ai/emotion`](https://huggingface.co/datasets/dair-ai/emotion) dataset:
+
+1. **BiGRU** — Custom Bidirectional GRU architecture built with PyTorch
+2. **DistilBERT + LoRA** — Transformer-based model fine-tuned using Parameter-Efficient Fine-Tuning (PEFT)
+
+The system classifies text into six emotions:
+
+**Sadness · Joy · Love · Anger · Fear · Surprise**
+
+The project focuses on comparing model accuracy, inference latency, model size, parameter efficiency, and deployment characteristics.
+
+---
 
 ## 🎯 Key Features
-- ✅ Custom BiGRU from scratch in PyTorch achieving **92.1% accuracy**
-- ✅ DistilBERT fine-tuning with LoRA achieving **91.8% accuracy** with **98% parameter reduction**
-- ✅ MLflow experiment tracking and model versioning
-- ✅ Model benchmarking and comparison (accuracy, latency, size)
-- ✅ FastAPI deployment with interactive API docs
-- ✅ Complete MLOps pipeline
 
-## 📊 Results
+- ✅ Custom BiGRU architecture implemented in PyTorch
+- ✅ BiGRU achieves **92.1% accuracy**
+- ✅ DistilBERT fine-tuning using **LoRA**
+- ✅ DistilBERT + LoRA achieves **91.8% accuracy**
+- ✅ **98% reduction in trainable parameters** using LoRA
+- ✅ MLflow experiment tracking and model versioning
+- ✅ Model benchmarking and comparison
+- ✅ Accuracy, precision, recall, F1-score, latency, and model-size evaluation
+- ✅ FastAPI REST API for inference
+- ✅ Interactive Swagger API documentation
+- ✅ Docker-ready deployment
+- ✅ Complete ML/MLOps training, evaluation, and deployment pipeline
+
+---
+
+## 📊 Model Comparison
 
 | Metric | BiGRU (PyTorch) | DistilBERT + LoRA |
-|--------|-----------------|-------------------|
+|---|---:|---:|
 | Accuracy | **92.1%** | **91.8%** |
 | Precision | 91.5% | 91.5% |
 | Recall | 92.1% | 91.8% |
-| F1 Score | 91.8% | 91.6% |
-| Inference Latency | **12ms** | 45ms |
-| Trainable Parameters | 3.6M | **890K** (98% reduction) |
-| Model Size | 66 MB | **2.6 MB** (adapter) |
+| F1 Score | **91.8%** | 91.6% |
+| Inference Latency | **12 ms** | 45 ms |
+| Trainable Parameters | 3.6M | **890K** |
+| Parameter Reduction | — | **98%** |
+| Model Size | 66 MB | **2.6 MB adapter** |
 
-### Key Insight
-- **BiGRU** is **faster** (12ms) and **lighter** (66MB)
-- **DistilBERT + LoRA** has **better generalization** and is **97% smaller** (2.6MB adapter)
-- Both models achieve **~92% accuracy** - excellent for production use!
+### 🔍 Key Insight
 
-## 🚀 Quick Start
+The comparison highlights the trade-off between a lightweight recurrent neural network and a transformer-based architecture:
+
+- **BiGRU** provides faster inference and a compact architecture.
+- **DistilBERT + LoRA** provides parameter-efficient transformer fine-tuning.
+- LoRA reduces the number of trainable parameters significantly while maintaining competitive classification performance.
+- Both approaches achieve approximately **92% accuracy** on the emotion classification task.
+
+---
+
+## 🏗️ System Architecture
+
+```text
+                         ┌──────────────────────┐
+                         │   Emotion Dataset    │
+                         │    dair-ai/emotion   │
+                         └──────────┬───────────┘
+                                    │
+                                    ▼
+                         ┌──────────────────────┐
+                         │ Data Preprocessing   │
+                         │ Tokenization         │
+                         │ Train/Val/Test Split │
+                         └──────────┬───────────┘
+                                    │
+                    ┌───────────────┴───────────────┐
+                    │                               │
+                    ▼                               ▼
+          ┌──────────────────┐            ┌────────────────────┐
+          │      BiGRU       │            │    DistilBERT      │
+          │                  │            │                    │
+          │ Bidirectional    │            │ Transformer        │
+          │ GRU Architecture │            │ + LoRA / PEFT      │
+          └────────┬─────────┘            └─────────┬──────────┘
+                   │                                │
+                   └──────────────┬─────────────────┘
+                                  ▼
+                         ┌──────────────────────┐
+                         │ Model Evaluation     │
+                         │ Accuracy             │
+                         │ Precision / Recall   │
+                         │ F1 Score / Latency   │
+                         └──────────┬───────────┘
+                                    │
+                                    ▼
+                         ┌──────────────────────┐
+                         │ MLflow Tracking      │
+                         │ Experiments           │
+                         │ Model Versioning      │
+                         └──────────┬───────────┘
+                                    │
+                                    ▼
+                         ┌──────────────────────┐
+                         │ FastAPI REST API     │
+                         │ /health              │
+                         │ /predict             │
+                         │ /docs                │
+                         └──────────────────────┘
 
 ### 1. Clone and Setup
 ```bash
